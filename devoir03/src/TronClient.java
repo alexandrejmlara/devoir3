@@ -18,7 +18,7 @@ public class TronClient {
     BufferedReader in=null;
     PrintWriter out=null;
 	
-	ArrayList<String> players=new ArrayList<>();
+	ArrayList<TronPlayerEx> players;
 	
 	
 	/**
@@ -29,6 +29,8 @@ public class TronClient {
 	public TronClient(String serverHostName, String serverPort) {
 		String address = serverHostName;
 		int port=Integer.parseInt(serverPort);
+		
+		players=new ArrayList<TronPlayerEx>();
 		
 		//chercher le nom de votre machine et le nom de l'utilisateur 
 		this.username = System.getProperty("user.name");
@@ -81,13 +83,34 @@ public class TronClient {
 		handleServerMessages();
 
 	}
+	/**
+	 * Ajoute un nouveau joueur à la liste de players 
+	 * @param login
+	 * @param nom_de_machine
+	 * @param couleur
+	 * @param xDepart
+	 * @param yDepart
+	 */
+	public void addPlayer(String login, String nom_de_machine, String couleur, String xDepart, String yDepart){
+		TronPlayerEx newPlayer = new TronPlayerEx(login, nom_de_machine, couleur, xDepart, yDepart);
+		players.add(newPlayer);
+	}
+	
+	/**
+	 * Reinitialize la liste de players
+	 */
+	public void resetPlayerList(){
+		players=new ArrayList<TronPlayerEx>();
+	}
+	
+	
 	
 	/***************************************************PARTIE 3***********************************************/
 	
 	/**
 	 * 
 	 */
-	private void handleServerMessages() {
+	public void handleServerMessages() {
 		//boucle infinie
 		while(true){
 			try {
