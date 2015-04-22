@@ -5,6 +5,7 @@ public class TronPlayer {
 	public String nomU, nomM; // nom utilisateur et nom machine
 	public Color c; // couleur du joueur
 	public int pDX, pDY; // position de départ du joueur
+	Trae trace; // trace du joueur
 	
 	
 	/** Constructeur pour le joueur
@@ -21,7 +22,9 @@ public class TronPlayer {
 		this.nomM = nomMachine;
 		this.c = couleur;
 		this.pDX = positionDepartX;
-		this.pDY = positionDepartY;	
+		this.pDY = positionDepartY;
+		
+		this.trace = new Trace(this.pDX, this.pDY);
 	}
 	
 
