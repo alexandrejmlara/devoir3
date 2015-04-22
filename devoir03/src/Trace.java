@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Trace {
 	
-	public TronPlayer joueur;
 	public int positionX, positionY;
 	public List<Point> trace;
 	
@@ -21,9 +20,8 @@ public class Trace {
 	 * @param initialX : coordonnée horizontale de départ du joueur
 	 * @param initialY : coordonnée verticale de départ du joueur
 	 */
-	public Trace(TronPlayer j, int initialX, int initialY){
+	public Trace(int initialX, int initialY){
 		
-		this.joueur = j;
 		this.positionX = initialX;
 		this.positionY = initialY;
 		
