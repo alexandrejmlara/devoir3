@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Trace {
 	
-	public int positionX, positionY;
+	public int positionX, positionY, longueur;
 	public List<Point> trace;
 	
 	/** Méthodes pour retourner la dernière position du joueur
@@ -27,7 +27,9 @@ public class Trace {
 		
 		Point p = new Point(initialX, initialY); // nouveau point servant de point de départ pour la trace
 		this.trace = new LinkedList<Point>();
-		this.trace.add(p);	
+		this.trace.add(p);
+		
+		this.longueur = 1;
 	}
 	
 
@@ -46,21 +48,25 @@ public class Trace {
 				y = this.getPosY() - 1;
 				nouveauPoint = new Point(x, y);
 				this.trace.add(nouveauPoint);
+				this.longueur++;
 			case 'a': // direction vers la gauche
 				x = this.getPosX() - 1;
 				y = this.getPosY();
 				nouveauPoint = new Point(x, y);
 				this.trace.add(nouveauPoint);
+				this.longueur++;
 			case 's': // direction vers le bas
 				x = this.getPosX();
 				y = this.getPosY() + 1;
 				nouveauPoint = new Point(x, y);
 				this.trace.add(nouveauPoint);
+				this.longueur++;
 			case'd': // direction vers la droite
 				x = this.getPosX() + 1;
 				y = this.getPosY();
 				nouveauPoint = new Point(x, y);
 				this.trace.add(nouveauPoint);
+				this.longueur++;
 			default:
 				System.out.println("commande invalide");
 		}
