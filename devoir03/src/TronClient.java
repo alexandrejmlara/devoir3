@@ -3,6 +3,14 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
+// Pour la partie graphique**********
+import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+// *********************************
+
 public class TronClient {
 	
 	int gridwidth;
@@ -37,7 +45,27 @@ public class TronClient {
 		this.machineHostName=InetAddress.getLocalHost().getHostName();
 		
 		/************************************COMPOSANTES GRAPHIQUES - PARTIE 2*****************************************/
+		JFrame frame = new JFrame();
+	       
+		final int FRAME_WIDTH = 1000;
+		final int FRAME_HEIGHT = 600;
+	       
+		frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		frame.setTitle("Jeu de Tron");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                
+		JAreneTron component = new JAreneTron(gridwidth,gridheight);
+                JLabel label = new JLabel("nom du monde"); // A FINIR!!!!!!!!!!!!!!!!!!!!!!!!
+                JPanel p = new JPanel();
+                p.setLayout(new BorderLayout());
+                p.add(component, BorderLayout.CENTER);
+                p.add(label, BorderLayout.EAST);
 		
+                frame.add(p);
+                p.setBackground(Color.black);
+	
+		frame.setVisible(true);
+		/************************************FIN PARTIE 2***************************************************************/
 		//Établissez la socket de connection au serveur, et construisez les stream 
 		//d'entrée et sortie pour communiquer avec le serveur
 		try {
