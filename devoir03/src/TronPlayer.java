@@ -5,7 +5,7 @@ public class TronPlayer {
 	public String nomU, nomM; // nom utilisateur et nom machine
 	public Color c; // couleur du joueur
 	public int pDX, pDY; // position de départ du joueur
-	Trae trace; // trace du joueur
+	Trace trace; // trace du joueur
 	
 	
 	/** Constructeur pour le joueur
