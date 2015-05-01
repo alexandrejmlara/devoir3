@@ -50,9 +50,13 @@ public class JAreneTron extends JComponent {
 					this.listeJoueurs.get(x).pDY*this.gridheight/this.getHeight(), 5, 5);
 			g2.draw(depart);
 			
+			// Trace dont la grandeur est proportionnelle à celle de la fenêtre
 			for(int y=0; y+1 < t.longueur;y++){							
 				g2.setColor(this.listeJoueurs.get(x).c);
-				g2.drawLine(t.trace.get(y).coordonneeX, t.trace.get(y).coordonneeY, t.trace.get(y+1).coordonneeX, t.trace.get(y+1).coordonneeY);				
+				g2.drawLine(t.trace.get(y).coordonneeX*this.getWidth()/this.gridwidth,
+						t.trace.get(y).coordonneeY*this.getHeight()/this.gridheight, 
+						t.trace.get(y+1).coordonneeX*this.getWidth()/this.gridwidth, 
+						t.trace.get(y+1).coordonneeY*this.getHeight()/this.gridheight);				
 			}
 		}		
 	}	
