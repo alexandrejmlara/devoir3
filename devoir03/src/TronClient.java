@@ -1,4 +1,7 @@
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -12,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 // *********************************
 
-public class TronClient {
+public class TronClient implements KeyListener {
 	
 	int gridwidth;
 	int gridheight;
@@ -59,20 +62,28 @@ public class TronClient {
 		frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		frame.setTitle("Jeu de Tron");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                
-		JAreneTron component = new JAreneTron(500,500);
-                JPanel p = new JPanel();
-                p.setLayout(new BorderLayout());
-                p.add(component, BorderLayout.CENTER);
-                
-                // Affichage des noms d'utilisateur et de leur machine
-                for(int i=0; i < players.size(); i++){
-                    JLabel noms = new JLabel(players.get(i).nomU+"@"players.get(i).nomM);
-                    p.add(noms, BorderLayout.East);
-                }
 		
-                frame.add(p);
-                p.setBackground(Color.black);
+		// Création de l'arène et ajout du keyListener
+		JAreneTron component = new JAreneTron(500,500, players);
+		component.addKeyListener(this);
+		frame.addWindowListener(new WindowAdapter() {
+		    public void windowGainedFocus(WindowEvent e) {
+		        component.requestFocusInWindow();
+		    }
+		});
+		// Création du Jpanel
+        JPanel p = new JPanel();
+        p.setLayout(new BorderLayout());
+        p.add(component, BorderLayout.CENTER);
+                
+        // Affichage des noms d'utilisateur et de leur machine
+        for(int i=0; i < players.size(); i++){
+              JLabel noms = new JLabel(players.get(i).nomU+"@"+players.get(i).nomM);
+              p.add(noms, BorderLayout.EAST);
+        }
+		
+        frame.add(p);
+        p.setBackground(Color.black);            
 		frame.setVisible(true);
 		/************************************FIN PARTIE 2***************************************************************/
 		//Établissez la socket de connection au serveur, et construisez les stream 
@@ -142,7 +153,33 @@ public class TronClient {
 	
 	
 	/***************************************************PARTIE 3***********************************************/
-	
+	// La redéfinition des méthodes de KeyListener
+	// C'est keyType qui va envoyer la commande de l'utilisateur au serveur
+	@Override
+	public void keyPressed(KeyEvent e) {}
+	@Override
+	public void keyReleased(KeyEvent e) {}
+	@Override
+	public void keyTyped(KeyEvent e) { // envoi la commande de l'utilisateur au serveur
+		
+		char c = e.getKeyChar();
+		System.out.println("Caractère appuyé: "+c);  // pour l'afficher sur la console
+		
+		if (c == KeyEvent.VK_W){
+			out.print("w");
+			out.flush();
+		} else if (c == KeyEvent.VK_S) {
+			out.print("s");
+			out.flush();
+		} else if (c == KeyEvent.VK_D) {
+			out.print("d");
+			out.flush();
+		} else if (c == KeyEvent.VK_A) {
+			out.print("a");
+			out.flush();
+		}
+		
+	}
 	/**
 	 * 
 	 */
@@ -177,4 +214,5 @@ public class TronClient {
 			new TronClient(args[0],args[1]);
 		  
 	}
+	
 }
