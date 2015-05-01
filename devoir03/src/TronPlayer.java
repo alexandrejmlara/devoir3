@@ -20,7 +20,7 @@ public class TronPlayer {
 		
 		this.nomU = nomUtilisateur;
 		this.nomM = nomMachine;
-		this.c = couleur;
+		this.c = Color.decode(couleur);
 		this.pDX = Integer.parseInt("positionDepartX");
 		this.pDY = Integer.parseInt("positionDepartY");
 		

@@ -54,7 +54,7 @@ public class TronClient {
 		frame.setTitle("Jeu de Tron");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 
-		JAreneTron component = new JAreneTron(gridwidth,gridheight);
+		JAreneTron component = new JAreneTron(gridwidth,gridheight,players);
 		JLabel label = new JLabel("nom du monde"); // A FINIR!!!!!!!!!!!!!!!!!!!!!!!!
 		JPanel p = new JPanel();
         p.setLayout(new BorderLayout());
