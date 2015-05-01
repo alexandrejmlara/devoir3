@@ -84,8 +84,7 @@ public class TronClient {
 		                           ", socket output stream = "+out);
 		        System.exit(1);
 		      }
-		      
-		      
+		
 		      // Envoyez le nom d'utilisateur au serveur
 		      out.println(username+"\n");
 		      out.flush();

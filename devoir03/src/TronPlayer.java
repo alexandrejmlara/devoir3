@@ -16,13 +16,13 @@ public class TronPlayer {
 	 * @param positionDepartX : coordonnée horizontale de de la position initial du joueur
 	 * @param positionDepartY : coordonnée verticale de de la position initial du joueur
 	 */
-	public TronPlayer(String nomUtilisateur, String nomMachine, Color couleur, int positionDepartX, int positionDepartY){
+	public TronPlayer(String nomUtilisateur, String nomMachine, String couleur, String positionDepartX, String positionDepartY){
 		
 		this.nomU = nomUtilisateur;
 		this.nomM = nomMachine;
 		this.c = couleur;
-		this.pDX = positionDepartX;
-		this.pDY = positionDepartY;
+		this.pDX = Integer.parseInt("positionDepartX");
+		this.pDY = Integer.parseInt("positionDepartY");
 		
 		this.trace = new Trace(this.pDX, this.pDY);
 	}
