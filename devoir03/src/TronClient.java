@@ -60,16 +60,19 @@ public class TronClient {
 		frame.setTitle("Jeu de Tron");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 
-		JAreneTron component = new JAreneTron(gridwidth,gridheight,players);
-		JLabel label = new JLabel("nom du monde"); // A FINIR!!!!!!!!!!!!!!!!!!!!!!!!
-		JPanel p = new JPanel();
-        p.setLayout(new BorderLayout());
-        p.add(component, BorderLayout.CENTER);
-        p.add(label, BorderLayout.EAST);
+		JAreneTron component = new JAreneTron(500,500);
+                JPanel p = new JPanel();
+                p.setLayout(new BorderLayout());
+                p.add(component, BorderLayout.CENTER);
+                
+                // Affichage des noms d'utilisateur et de leur machine
+                for(int i=0; i < players.size(); i++){
+                    JLabel noms = new JLabel(players.get(i).nomU+"@"players.get(i).nomM);
+                    p.add(noms, BorderLayout.East);
+                }
 		
-        frame.add(p);
-        p.setBackground(Color.black);
-	
+                frame.add(p);
+                p.setBackground(Color.black);
 		frame.setVisible(true);
 		/************************************FIN PARTIE 2***************************************************************/
 		//Établissez la socket de connection au serveur, et construisez les stream 
