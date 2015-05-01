@@ -26,6 +26,5 @@ public class TronPlayer {
 		
 		this.trace = new Trace(this.pDX, this.pDY);
 	}
-	
 
 }

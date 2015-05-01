@@ -26,7 +26,7 @@ public class TronClient {
     BufferedReader in=null;
     PrintWriter out=null;
 	
-	ArrayList<TronPlayerEx> players;
+	ArrayList<TronPlayer> players;
 	
 	
 	/**
@@ -38,7 +38,7 @@ public class TronClient {
 		String address = serverHostName;
 		int port=Integer.parseInt(serverPort);
 		
-		players=new ArrayList<TronPlayerEx>();
+		players=new ArrayList<TronPlayer>();
 		
 		//chercher le nom de votre machine et le nom de l'utilisateur 
 		this.username = System.getProperty("user.name");
@@ -55,14 +55,14 @@ public class TronClient {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 
 		JAreneTron component = new JAreneTron(gridwidth,gridheight);
-                JLabel label = new JLabel("nom du monde"); // A FINIR!!!!!!!!!!!!!!!!!!!!!!!!
-                JPanel p = new JPanel();
-                p.setLayout(new BorderLayout());
-                p.add(component, BorderLayout.CENTER);
-                p.add(label, BorderLayout.EAST);
+		JLabel label = new JLabel("nom du monde"); // A FINIR!!!!!!!!!!!!!!!!!!!!!!!!
+		JPanel p = new JPanel();
+        p.setLayout(new BorderLayout());
+        p.add(component, BorderLayout.CENTER);
+        p.add(label, BorderLayout.EAST);
 		
-                frame.add(p);
-                p.setBackground(Color.black);
+        frame.add(p);
+        p.setBackground(Color.black);
 	
 		frame.setVisible(true);
 		/************************************FIN PARTIE 2***************************************************************/
@@ -120,7 +120,7 @@ public class TronClient {
 	 * @param yDepart
 	 */
 	public void addPlayer(String login, String nom_de_machine, String couleur, String xDepart, String yDepart){
-		TronPlayerEx newPlayer = new TronPlayerEx(login, nom_de_machine, couleur, xDepart, yDepart);
+		TronPlayer newPlayer = new TronPlayer(login, nom_de_machine, couleur, xDepart, yDepart);
 		players.add(newPlayer);
 	}
 	
@@ -128,7 +128,7 @@ public class TronClient {
 	 * Reinitialize la liste de players
 	 */
 	public void resetPlayerList(){
-		players=new ArrayList<TronPlayerEx>();
+		players=new ArrayList<TronPlayer>();
 	}
 	
 	
@@ -159,14 +159,6 @@ public class TronClient {
 		}
 	}
 
-
-
-
-
-
-
-
-
 	public static void main(String[] args){
 		
 		//on verifie s'il y a seulement 2 elements en args, si oui, on instancie un objet type TronClient
@@ -175,7 +167,6 @@ public class TronClient {
 		      System.exit(0);
 		} else
 			new TronClient(args[0],args[1]);
-		
 		  
 	}
 }
