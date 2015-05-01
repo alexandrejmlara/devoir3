@@ -49,24 +49,28 @@ public class Trace {
 				nouveauPoint = new Point(x, y);
 				this.trace.add(nouveauPoint);
 				this.longueur++;
+				this.positionY = y;
 			case 'a': // direction vers la gauche
 				x = this.getPosX() - 1;
 				y = this.getPosY();
 				nouveauPoint = new Point(x, y);
 				this.trace.add(nouveauPoint);
 				this.longueur++;
+				this.positionY = x;
 			case 's': // direction vers le bas
 				x = this.getPosX();
 				y = this.getPosY() + 1;
 				nouveauPoint = new Point(x, y);
 				this.trace.add(nouveauPoint);
 				this.longueur++;
+				this.positionY = y;
 			case'd': // direction vers la droite
 				x = this.getPosX() + 1;
 				y = this.getPosY();
 				nouveauPoint = new Point(x, y);
 				this.trace.add(nouveauPoint);
 				this.longueur++;
+				this.positionY = x;
 			default:
 				System.out.println("commande invalide");
 		}
