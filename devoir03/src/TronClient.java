@@ -6,6 +6,7 @@ import java.util.ArrayList;
 // Pour la partie graphique**********
 import java.awt.BorderLayout;
 import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -42,7 +43,12 @@ public class TronClient {
 		
 		//chercher le nom de votre machine et le nom de l'utilisateur 
 		this.username = System.getProperty("user.name");
-		this.machineHostName=InetAddress.getLocalHost().getHostName();
+		try {
+			this.machineHostName=InetAddress.getLocalHost().getHostName();
+		} catch (UnknownHostException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		/************************************COMPOSANTES GRAPHIQUES - PARTIE 2*****************************************/
 		JFrame frame = new JFrame();
