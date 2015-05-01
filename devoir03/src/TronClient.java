@@ -72,18 +72,19 @@ public class TronClient implements KeyListener {
 		    }
 		});
 		// Création du Jpanel
-        JPanel p = new JPanel();
-        p.setLayout(new BorderLayout());
-        p.add(component, BorderLayout.CENTER);
-                
-        // Affichage des noms d'utilisateur et de leur machine
-        for(int i=0; i < players.size(); i++){
-              JLabel noms = new JLabel(players.get(i).nomU+"@"+players.get(i).nomM);
-              p.add(noms, BorderLayout.EAST);
-        }
-		
-        frame.add(p);
-        p.setBackground(Color.black);            
+	        JPanel p = new JPanel();
+	        p.setLayout(new BorderLayout());
+	        p.add(component, BorderLayout.CENTER);
+	                
+	        // Affichage des noms d'utilisateur et de leur machine
+	        for(int i=0; i < players.size(); i++){
+	              JLabel noms = new JLabel(players.get(i).nomU+"@"+players.get(i).nomM);
+	              p.add(noms, BorderLayout.EAST);
+	              noms.addKeyListener(this);
+	        }
+			
+	        frame.add(p);
+	        p.setBackground(Color.black);            
 		frame.setVisible(true);
 		/************************************FIN PARTIE 2***************************************************************/
 		//Établissez la socket de connection au serveur, et construisez les stream 
