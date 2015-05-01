@@ -23,8 +23,8 @@ public class JAreneTron extends JComponent {
 		
 		this.gridwidth = w;
 		this.gridheight = h;
-		this.listeJoueurs = listeDeJoueurs;	
-		
+		this.listeJoueurs = listeDeJoueurs;
+		this.setFocusable(true);
 	}
 	
 	protected void paintComponent(Graphics g){
