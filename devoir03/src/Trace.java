@@ -50,6 +50,7 @@ public class Trace {
 				this.trace.add(nouveauPoint);
 				this.longueur++;
 				this.positionY = y;
+				break;
 			case 'a': // direction vers la gauche
 				x = this.getPosX() - 1;
 				y = this.getPosY();
@@ -57,6 +58,7 @@ public class Trace {
 				this.trace.add(nouveauPoint);
 				this.longueur++;
 				this.positionY = x;
+				break;
 			case 's': // direction vers le bas
 				x = this.getPosX();
 				y = this.getPosY() + 1;
@@ -64,6 +66,7 @@ public class Trace {
 				this.trace.add(nouveauPoint);
 				this.longueur++;
 				this.positionY = y;
+				break;
 			case'd': // direction vers la droite
 				x = this.getPosX() + 1;
 				y = this.getPosY();
@@ -71,6 +74,7 @@ public class Trace {
 				this.trace.add(nouveauPoint);
 				this.longueur++;
 				this.positionY = x;
+				break;
 			default:
 				System.out.println("commande invalide");
 		}
